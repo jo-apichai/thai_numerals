@@ -21,4 +21,16 @@ RSpec.describe ThaiNumerals do
       expect(ThaiNumerals.to_arabic('๑๒,๓๔๕,๖๗๘.๙๐')).to eq '12,345,678.90'
     end
   end
+
+  describe '#to_thai_counting' do
+    it 'converts Arabic number to Thai counting' do
+      expect(ThaiNumerals.to_thai_counting(0)).to eq 'ศูนย์'
+      expect(ThaiNumerals.to_thai_counting(1)).to eq 'หนึ่ง'
+      expect(ThaiNumerals.to_thai_counting(11)).to eq 'สิบเอ็ด'
+      expect(ThaiNumerals.to_thai_counting(21)).to eq 'ยี่สิบเอ็ด'
+      expect(ThaiNumerals.to_thai_counting(1_234_567)).to eq 'หนึ่งล้านสองแสนสามหมื่นสี่พันห้าร้อยหกสิบเจ็ด'
+      expect(ThaiNumerals.to_thai_counting(20_202_020)).to eq 'ยี่สิบล้านสองแสนสองพันยี่สิบ'
+      expect(ThaiNumerals.to_thai_counting(101_010_101)).to eq 'หนึ่งร้อยเอ็ดล้านหนึ่งหมื่นหนึ่งร้อยเอ็ด'
+    end
+  end
 end
