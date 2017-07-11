@@ -35,7 +35,7 @@ module ThaiNumerals
     4 => 'หมื่น',
     5 => 'แสน',
     6 => 'ล้าน'
-  }
+  }.freeze
 
   def self.to_thai(number)
     number.to_s.gsub(Regexp.union(THAI_NUMBERS.keys), THAI_NUMBERS)
